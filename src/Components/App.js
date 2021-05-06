@@ -1,7 +1,6 @@
 import React from "react";
 import NavBar from '../Components/Navbar';
 import MovieCard from './MovieCard';
-import InfiniteScroll from 'react-infinite-scroll-component';
 
 import data from '../data';
 import { addMovies, showFavoriteMethod } from '../actions'
@@ -76,25 +75,20 @@ class App extends React.Component {
           </div>
           <div className="list">
 
+          {
+          displayMovies.length === 0 ? <div>no-movies</div> : null
+        }
+
             {
 
               displayMovies.map((movie, index) => {
-                return <InfiniteScroll
-                  dataLength={list.length}
-                  next={this.fetchMoreData}
-                  style={{ display: 'flex', flexDirection: 'column-reverse' }} //To put endMessage and loader to the top.
-                  inverse={true} //
-                  hasMore={true}
-                // loader={<h4>Loading...</h4>}
-                // scrollableTarget="scrollableDiv"
-                >
-                  <MovieCard
+                return  <MovieCard
                     key={`movies-${index}-${movie.id}`}
                     movie={movie}
                     dispatch={this.props.store.dispatch}
                     isFavorite={this.isMovieFavourite(movie)}
                   />
-                </InfiniteScroll>
+                
 
               })
 
@@ -103,9 +97,7 @@ class App extends React.Component {
           </div>
         </div>
 
-        {
-          displayMovies.length === 0 ? <div>no-movies</div> : null
-        }
+      
 
       </div>
     );

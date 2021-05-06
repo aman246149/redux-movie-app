@@ -107,4 +107,14 @@ input{
   
   font-weight: 800;
   font-size: larger;
+  cursor: pointer;
+}
+
+.unfavourite-btn{
+  background-color:orange;
+  border-radius: 10px;
+  font-weight: 800;
+  padding: 2px;
+  border: 1px solid brown;
+  cursor: pointer;
 }
